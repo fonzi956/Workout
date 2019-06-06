@@ -1,13 +1,36 @@
-var sec = 420;
+var sec = 0;
+var min = 0;
 setTimeout(countDown,1000);
-console.log(sec);
+function typeWorkOut(min, sec){
+   switch(min) {
+      case 0:
+         return "Seated Ab Circles Left x 60 seconds"
+      case 1:
+        return "Seated Ab Circles Right x 60 seconds";
+        break;
+      case 2:
+      return "Drunken Mountain Climbers x 60 seconds";
+        break;
+      default:
+      return "Workout done";
+    }
+}
+
 function countDown(){
-   sec--;
+   document.getElementById("h2").innerHTML = typeWorkOut(min, sec);
+   document.getElementById("p1").innerHTML = min+" : "+sec;
+   if(sec == 59) {
+      sec = 0;
+      min++;
+   }
+   sec++;
    if(sec > 0){
       setTimeout(countDown,1000);
    }
+   
 
-   console.log(n);
+   
+   
 }
 
 /*
