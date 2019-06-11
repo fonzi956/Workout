@@ -1,4 +1,4 @@
-var sec = 26;
+var sec = 0;
 var min = 3;
 setTimeout(countUp,1000);
 
@@ -23,12 +23,16 @@ function countUp(){
    }
    if(resting[2] == "1"&& sec == 29){
       console.log("30");
+      play("thirty");
+
    }
    if(resting[2] == "1"&& sec == 49){
       console.log("10");
+      play("ten");
    }
    if(resting[2] == "30" && sec == 15){
-      console.log("15");
+      console.log("fithteen");
+      play("fithteen");
    } 
 
    sec++;
@@ -44,6 +48,13 @@ function countUp(){
       setTimeout(countUp,1000);
 
    }
+}
+
+function play(mus) {
+   var song = "WOR/"+mus+".mp3";
+   console.log(song);
+   var audio = new Audio(song);
+   audio.play();
 }
 
 /*
