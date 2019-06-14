@@ -53,10 +53,28 @@ function countUp(){
          play(resting[1]);
          //go
       }
-      else  if((min > 0 && (sec >= 29 && sec <= 30)) && resting[1] != "REST" && (resting[2] == 31 || resting[2] == 30)){
+      else  if((min > 0 && (sec >= 29 && sec < 30)) && resting[1] != "REST" && (resting[2] == 31 || resting[2] == 30)){
          document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
          setTimeout(countUp,5000);
          play(resting[1]);
+         //go
+      }
+      else if((min > 0 && (sec >= 0 && sec <= 1)) && resting[1] == "REST" && resting[2] == 1){
+         document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
+         setTimeout(countUp,5000);
+         play(resting[1]);
+         //go
+      }
+      else  if((min > 0 && (sec >= 29 && sec < 30)) && resting[1] == "REST" && (resting[2] == 31 || resting[2] == 30)){
+         document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
+         setTimeout(countUp,5000);
+         play(resting[1]);
+         //go
+      }
+      else  if((min == 7)){
+         document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
+         setTimeout(countUp,5000);
+         play("REST");
          //go
       }
       else
@@ -66,7 +84,7 @@ function countUp(){
 }
 
 function play(mus) {
-   var song = "WOR/"+mus+".mp3";
+   song = "WOR/"+mus+".mp3";
    var audio = new Audio(song);
    audio.play();
 }
