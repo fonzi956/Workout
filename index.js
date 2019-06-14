@@ -1,5 +1,5 @@
 var sec = 0;
-var min = 3;
+var min = 0;
 setTimeout(countUp,1000);
 
 function typeWorkOut(min, sec){
@@ -22,39 +22,43 @@ function countUp(){
       min++;
    }
    if(resting[2] == "1"&& sec == 29){
-      console.log("30");
       play("thirty");
 
    }
    if(resting[2] == "1"&& sec == 49){
-      console.log("10");
       play("ten");
    }
+   
    // starting at the 30 seconds for 1 min workout
    if(resting[2] == "31"&& sec == 19){
-      console.log("10");
       play("ten");
 
    }
-   if(resting[2] == "31"&& sec == 59){
-      console.log("30");
+   if(resting[2] == "31" && sec == 58){
       play("thirty");
    }
-   if(resting[2] == "30" && sec == 15){
-      console.log("fithteen");
+   if(resting[2] == "30" && (sec == 15 || sec == 45)){
       play("fithteen");
    } 
+   
 
    sec++;
    document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
    document.getElementById("p1").innerHTML = min+" : "+sec;
    if(sec > 0){
-      //console.log(resting[0] == "REST");
-      if((min > 0 && (sec >= 0 && sec <= 1)) && resting[0] != "REST"){
+      
+      if((min > 0 && (sec >= 0 && sec <= 1)) && resting[1] != "REST" && resting[2] == 1){
          document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
          setTimeout(countUp,5000);
+         play(resting[1]);
          //go
-      } 
+      }
+      else  if((min > 0 && (sec >= 29 && sec <= 30)) && resting[1] != "REST" && (resting[2] == 31 || resting[2] == 30)){
+         document.getElementById("h2").innerHTML = resting[0] + " <br>next is "+ resting[1];
+         setTimeout(countUp,5000);
+         play(resting[1]);
+         //go
+      }
       else
       setTimeout(countUp,1000);
 
